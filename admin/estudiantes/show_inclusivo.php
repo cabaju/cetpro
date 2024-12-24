@@ -331,7 +331,7 @@ if (isset($fecha_nacimiento) && !empty($fecha_nacimiento)) {
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="large-text1" for="">Institución Educativa de Procedencia</label>
-                                            <p class="large-text4"><?=$ref_parentezco;?></p>
+                                            <p class="large-text4"><?=$ref_colegio;?></p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

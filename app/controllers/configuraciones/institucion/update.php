@@ -12,19 +12,20 @@ $id_config_institucion = $_POST['id_config_institucion'];
 
 
 if($_FILES['file']['name'] != null){
-    //echo "existe una imagen";
     $nombre_del_archivo =  date('Y-m-d-H-i-s').$_FILES['file']['name'];
     $location = "../../../../public/images/configuracion/".$nombre_del_archivo;
     move_uploaded_file($_FILES['file']['tmp_name'],$location);
     $logo = $nombre_del_archivo;
 }else{
-    //echo "no existe imagen";
     if($logo == ""){
         $logo = "";
     }else{
         $logo = $_POST['logo'];
     }
 }
+
+
+
 
 
 $sentencia = $pdo->prepare('UPDATE configuracion_instituciones 

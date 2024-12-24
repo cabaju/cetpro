@@ -176,15 +176,13 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                                 <option value="PROFESIONAL  NO  UNIVERSITARIO INCOMPLETO" <?= $gradoinst== 'PROFESIONAL  NO  UNIVERSITARIO INCOMPLETO' ? 'selected' : ''; ?>>PROFESIONAL  NO  UNIVERSITARIO INCOMPLETO</option>
                                                 <option value="PROFESIONAL  NO  UNIVERSITARIO" <?= $gradoinst== 'PROFESIONAL  NO  UNIVERSITARIO' ? 'selected' : ''; ?>>PROFESIONAL  NO  UNIVERSITARIO</option>
 
-                                  
-
-                                                <option value="PROFESIONAL  UNIVERSITARIO INCOMPLETO"<?= $gradoinst== 'PROFESIONAL TÉCNICO' ? 'selected' : ''; ?>>PROFESIONAL  UNIVERSITARIO INCOMPLETO</option>  
-                                                <option value="PROFESIONAL   UNIVERSITARIO"<?= $gradoinst== 'PROFESIONAL TÉCNICO' ? 'selected' : ''; ?>>PROFESIONAL   UNIVERSITARIO</option> 
-                                                <option value="POST GRADO"<?= $gradoinst== 'PROFESIONAL TÉCNICO' ? 'selected' : ''; ?>>POST GRADO</option>          
+                                                <option value="PROFESIONAL  UNIVERSITARIO INCOMPLETO"<?= $gradoinst== 'PROFESIONAL  UNIVERSITARIO INCOMPLETO' ? 'selected' : ''; ?>>PROFESIONAL  UNIVERSITARIO INCOMPLETO</option>  
+                                                <option value="PROFESIONAL   UNIVERSITARIO"<?= $gradoinst== 'PROFESIONAL   UNIVERSITARIO' ? 'selected' : ''; ?>>PROFESIONAL   UNIVERSITARIO</option> 
+                                                <option value="POST GRADO"<?= $gradoinst== 'POST GRADO' ? 'selected' : ''; ?>>POST GRADO</option>          
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <!-- <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="">Estudiante Inclusivo</label>
                                             <select name="inclusivo" class="form-control" required>
@@ -193,21 +191,32 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                                 <option value="NO" <?= $inclusivo == 'NO' ? 'selected' : ''; ?>>NO</option>
                                             </select>
                                         </div>
+                                    </div> -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="inclusivo">Estudiante Inclusivo</label>
+                                            <select name="inclusivo" id="inclusivo" class="form-control" required>
+                                                <option value="" disabled <?= empty($inclusivo) ? 'selected' : ''; ?>>Seleccione una opción</option>
+                                                <option value="SI" <?= isset($inclusivo) && $inclusivo === 'SI' ? 'selected' : ''; ?>>SI</option>
+                                                <option value="NO" <?= isset($inclusivo) && $inclusivo === 'NO' ? 'selected' : ''; ?>>NO</option>
+                                            </select>
+                                        </div>
                                     </div>
+
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="">Discapacidad</label>
                                             <select name="discapacidad" class="form-control">
-                                                <option value="" disabled <?= empty($inclusivo) ? 'selected' : ''; ?>>Seleccione una opción</option>
-                                                <option value="NINGUNA" <?= $inclusivo == 'NINGUNA' ? 'selected' : ''; ?>>NINGUNA</option>
-                                                <option value="DISCAPACIDAD AUDITIVA - HIPOACUSIA" <?= $inclusivo == 'DISCAPACIDAD AUDITIVA - HIPOACUSIA' ? 'selected' : ''; ?>>DISCAPACIDAD AUDITIVA - HIPOACUSIA</option>
-                                                <option value="DISCAPACIDAD AUDITIVA - SORDERA TOTAL" <?= $inclusivo == 'DISCAPACIDAD AUDITIVA - SORDERA TOTAL' ? 'selected' : ''; ?>>DISCAPACIDAD AUDITIVA - SORDERA TOTAL</option>
-                                                <option value="DISCAPACIDAD FÍSICA O MOTORA" <?= $inclusivo == 'DISCAPACIDAD FÍSICA O MOTORA' ? 'selected' : ''; ?>>DISCAPACIDAD FÍSICA O MOTORA</option>
-                                                <option value="DISCAPACIDAD INTELECTUAL - RETARDO MENTAL LIGERO" <?= $inclusivo == 'DISCAPACIDAD INTELECTUAL - RETARDO MENTAL LIGERO' ? 'selected' : ''; ?>>DISCAPACIDAD INTELECTUAL - RETARDO MENTAL LIGERO</option>
-                                                <option value="DISCAPACIDAD INTELECTUAL - RETARDO MENTAL MODERADO" <?= $inclusivo == 'DISCAPACIDAD INTELECTUAL - RETARDO MENTAL MODERADO' ? 'selected' : ''; ?>>DISCAPACIDAD INTELECTUAL - RETARDO MENTAL MODERADO</option>
-                                                <option value="DISCAPACIDAD INTELECTUAL - RETARDO MENTAL GRAVE" <?= $inclusivo == 'DISCAPACIDAD INTELECTUAL - RETARDO MENTAL GRAVE' ? 'selected' : ''; ?>>DISCAPACIDAD INTELECTUAL - RETARDO MENTAL GRAVE</option>
-                                                <option value="DISCAPACIDAD VISUAL - BAJA VISIÓN" <?= $inclusivo == 'DISCAPACIDAD VISUAL - BAJA VISIÓN' ? 'selected' : ''; ?>>DISCAPACIDAD VISUAL - BAJA VISIÓN</option>
-                                                <option value="DISCAPACIDAD VISUAL - CEGUERA" <?= $inclusivo == 'DISCAPACIDAD VISUAL - CEGUERA' ? 'selected' : ''; ?>>DISCAPACIDAD VISUAL - CEGUERA</option>
+                                                <option value="" disabled <?= empty($discapacidad) ? 'selected' : ''; ?>>Seleccione una opción</option>
+                                                <option value="NINGUNA" <?= $discapacidad == 'NINGUNA' ? 'selected' : ''; ?>>NINGUNA</option>
+                                                <option value="DISCAPACIDAD AUDITIVA - HIPOACUSIA" <?= $discapacidad == 'DISCAPACIDAD AUDITIVA - HIPOACUSIA' ? 'selected' : ''; ?>>DISCAPACIDAD AUDITIVA - HIPOACUSIA</option>
+                                                <option value="DISCAPACIDAD AUDITIVA - SORDERA TOTAL" <?= $discapacidad == 'DISCAPACIDAD AUDITIVA - SORDERA TOTAL' ? 'selected' : ''; ?>>DISCAPACIDAD AUDITIVA - SORDERA TOTAL</option>
+                                                <option value="DISCAPACIDAD FÍSICA O MOTORA" <?= $discapacidad == 'DISCAPACIDAD FÍSICA O MOTORA' ? 'selected' : ''; ?>>DISCAPACIDAD FÍSICA O MOTORA</option>
+                                                <option value="DISCAPACIDAD INTELECTUAL - RETARDO MENTAL LIGERO" <?= $discapacidad == 'DISCAPACIDAD INTELECTUAL - RETARDO MENTAL LIGERO' ? 'selected' : ''; ?>>DISCAPACIDAD INTELECTUAL - RETARDO MENTAL LIGERO</option>
+                                                <option value="DISCAPACIDAD INTELECTUAL - RETARDO MENTAL MODERADO" <?= $discapacidad == 'DISCAPACIDAD INTELECTUAL - RETARDO MENTAL MODERADO' ? 'selected' : ''; ?>>DISCAPACIDAD INTELECTUAL - RETARDO MENTAL MODERADO</option>
+                                                <option value="DISCAPACIDAD INTELECTUAL - RETARDO MENTAL GRAVE" <?= $discapacidad == 'DISCAPACIDAD INTELECTUAL - RETARDO MENTAL GRAVE' ? 'selected' : ''; ?>>DISCAPACIDAD INTELECTUAL - RETARDO MENTAL GRAVE</option>
+                                                <option value="DISCAPACIDAD VISUAL - BAJA VISIÓN" <?= $discapacidad == 'DISCAPACIDAD VISUAL - BAJA VISIÓN' ? 'selected' : ''; ?>>DISCAPACIDAD VISUAL - BAJA VISIÓN</option>
+                                                <option value="DISCAPACIDAD VISUAL - CEGUERA" <?= $discapacidad == 'DISCAPACIDAD VISUAL - CEGUERA' ? 'selected' : ''; ?>>DISCAPACIDAD VISUAL - CEGUERA</option>
                                             </select>
                                         </div>                                    
                                     </div>
@@ -224,56 +233,136 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-4">
+                                <br>
+                                Seleccionar nuevamente las imagenes
+                                <br>
+                                <br>
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <!-- <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="">DNI / CE</label>
-                                                    <input type="file" name="file" id="file" class="form-control">
+                                                    <input type="file" name="file_foto" id="file_foto" class="form-control">
                                                     <br>
                                                     <center>
-                                                        <output id="list_dni">
-                                                            <img src="<?=APP_URL."/public/images/configuracion/".$foto;?>" width="200px" alt="">
+                                                        <output id="list_foto">
+                                                            <img src="<?=APP_URL."/public/images/configuracion/".$foto;?>" width="50px" alt="">
                                                         </output>
                                                     </center>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="">DNI / CE</label>
                                                     <input type="file" name="file_ci1" id="file_ci1" class="form-control">
                                                     <br>
                                                     <center>
                                                         <output id="list_ci1">
-                                                            <img src="<?=APP_URL."/public/images/configuracion/".$ci1;?>" width="200px" alt="">
+                                                            <img src="<?=APP_URL."/public/images/configuracion/".$ci1;?>" width="50px" alt="">
                                                         </output>
                                                     </center>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                            </div>        
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="">DNI CONADIS</label>
                                                     <input type="file" name="file_conadis" id="file_conadis" class="form-control">
                                                     <br>
                                                     <center>
                                                         <output id="list_conadis">
-                                                            <img src="<?=APP_URL."/public/images/configuracion/".$conadis;?>" width="200px" alt="">
+                                                            <img src="<?=APP_URL."/public/images/configuracion/".$conadis;?>" width="50px" alt="">
                                                         </output>
                                                     </center>
                                                 </div>
                                             </div>
+                                    
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="">DNI CONADIS</label>
+                                                    <input type="file" name="file_conadis1" id="file_conadis1" class="form-control">
+                                                    <br>
+                                                    <center>
+                                                        <output id="list_conadis1">
+                                                            <img src="<?=APP_URL."/public/images/configuracion/".$conadis1;?>" width="50px" alt="">
+                                                        </output>
+                                                    </center>
+                                                </div>
+                                            </div> -->
+
+
+                                            <!-- Imagen DNI / CE -->
+                                            <div class="col-md-3">
+    <div class="form-group">
+        <label for="file_foto">DNI / CE</label>
+        <input type="file" name="file_foto" id="file_foto" class="form-control">
+        <br>
+        <center>
+            <output id="list_foto">
+                <?php if (!empty($foto)): ?>
+                    <img src="<?= APP_URL . "/public/images/configuracion/" . htmlspecialchars($foto); ?>" width="50px" alt="DNI / CE">
+                <?php else: ?>
+                    <span>No hay imagen disponible</span>
+                <?php endif; ?>
+            </output>
+        </center>
+    </div>
+</div>
+
+<!-- Imagen CI1 -->
+<div class="col-md-3">
+    <div class="form-group">
+        <label for="file_ci1">DNI / CE</label>
+        <input type="file" name="file_ci1" id="file_ci1" class="form-control">
+        <br>
+        <center>
+            <output id="list_ci1">
+                <?php if (!empty($ci1)): ?>
+                    <img src="<?= APP_URL . "/public/images/configuracion/" . htmlspecialchars($ci1); ?>" width="50px" alt="DNI / CE">
+                <?php else: ?>
+                    <span>No hay imagen disponible</span>
+                <?php endif; ?>
+            </output>
+        </center>
+    </div>
+</div>
+
+<!-- Imagen CONADIS -->
+<div class="col-md-3">
+    <div class="form-group">
+        <label for="file_conadis">DNI CONADIS</label>
+        <input type="file" name="file_conadis" id="file_conadis" class="form-control">
+        <br>
+        <center>
+            <output id="list_conadis">
+                <?php if (!empty($conadis)): ?>
+                    <img src="<?= APP_URL . "/public/images/configuracion/" . htmlspecialchars($conadis); ?>" width="50px" alt="CONADIS">
+                <?php else: ?>
+                    <span>No hay imagen disponible</span>
+                <?php endif; ?>
+            </output>
+        </center>
+    </div>
+</div>
+
+<!-- Imagen CONADIS1 -->
+<div class="col-md-3">
+    <div class="form-group">
+        <label for="file_conadis1">DNI CONADIS</label>
+        <input type="file" name="file_conadis1" id="file_conadis1" class="form-control">
+        <br>
+        <center>
+            <output id="list_conadis1">
+                <?php if (!empty($conadis1)): ?>
+                    <img src="<?= APP_URL . "/public/images/configuracion/" . htmlspecialchars($conadis1); ?>" width="50px" alt="CONADIS1">
+                <?php else: ?>
+                    <span>No hay imagen disponible</span>
+                <?php endif; ?>
+            </output>
+        </center>
+    </div>
+</div>
+
+
                                         </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -287,42 +376,57 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                <div class="col-md-2">
-    <div class="form-group">
-        <label for="">Periodo de Gestión</label>
-        <select name="nivel_id" class="form-control" required>
-            <option value="" disabled <?= empty($nivel_id) ? 'selected' : ''; ?>>Elije una opción</option>
-            <?php
-            foreach ($niveles as $nivele) { 
-                // Comparación asegurando tipos de datos consistentes
-                $selected = ((string)$nivele['id_nivel'] === (string)$nivel_id) ? 'selected' : '';
-                ?>
-                <option value="<?=$nivele['id_nivel'];?>" <?= $selected; ?>><?=$nivele['nivel'];?></option>
-                <?php
-            }
-            ?>
-        </select>
-    </div>
-</div>
-
-
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="">Periodo de Gestión</label>
+                                            <select name="nivel_id" class="form-control" required>
+                                                <option value="" disabled <?= empty($nivel_id) ? 'selected' : ''; ?>>Elije una opción</option>
+                                                <?php
+                                                foreach ($niveles as $nivele) { 
+                                                    
+                                                    $selected = ((string)$nivele['id_nivel'] === (string)$nivel_id) ? 'selected' : '';
+                                                    ?>
+                                                    <option value="<?=$nivele['id_nivel'];?>" <?= $selected; ?>><?=$nivele['nivel'];?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="">Código del Curso</label>
                                             <select name="grado_id" id="grado_id" class="form-control" onchange="actualizarCurso()">
                                             <option value="" disabled selected>Elije una opción</option>
-                                                <?php foreach ($grados as $grado) { ?>
-                                                    <option value="<?=$grado['id_grado'];?>" data-curso="<?=$grado['curso']." || ".$grado['paralelo'];?>">
+                                            <?php foreach ($grados as $grado) { ?>
+                                                    <option value="<?=$grado['id_grado'];?>" 
+                                                        data-curso="<?=$grado['curso']." || ".$grado['paralelo'];?>"
+                                                        data-docente="<?=$grado['apellido_docente']." , ".$grado['nombre_docente'];?>"
+                                                        data-semestre="<?=$grado['semestre'];?>"
+                                                    >
                                                         <?=$grado['codigo'];?>
                                                     </option>
                                                 <?php } ?>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Curso - Especialidad</label>
                                             <input type="text" name="curso_especialidad" id="curso_especialidad" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Docente</label>
+                                            <input type="text" name="docente" id="docente" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Semestre</label>
+                                            <input type="text" name="semestre" id="semestre" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -349,36 +453,36 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                             <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                        <label for="">Grado de Estudios Secundarios Actual</label>
-                                            <select name="ref_nombre" value="<?=$ref_nombre;?>" class="form-control">
-                                            <!-- <option value="" disabled selected>Elije una opción</option> -->
-                                            <option value="NINGUNA">NINGUNA</option>
-                                            <option value="SEGUNDO AÑO DE SECUNDARIA">SEGUNDO AÑO DE SECUNDARIA</option>
-                                            <option value="TERCER AÑO DE SECUNDARIA">TERCER AÑO DE SECUNDARIA</option>
-                                            <option value="CUARTO AÑO DE SECUNDARIA">CUARTO AÑO DE SECUNDARIA</option>
-                                            <option value="QUINTO AÑO DE SECUNDARIA">QUINTO AÑO DE SECUNDARIA</option>
+                                            <label for="">Grado de Estudios Secundarios Actual</label>
+                                            <select name="ref_nombre" class="form-control" required>
+                                                <option value="" disabled <?= empty($ref_nombre) ? 'selected' : ''; ?>>Seleccione una opción</option>
+                                                <option value="NINGUNA" <?= $ref_nombre == 'NINGUNA' ? 'selected' : ''; ?>>NINGUNA</option>
+                                                <option value="SEGUNDO AÑO DE SECUNDARIA" <?= $ref_nombre == 'SEGUNDO AÑO DE SECUNDARIA' ? 'selected' : ''; ?>>SEGUNDO AÑO DE SECUNDARIA</option>
+                                                <option value="TERCER AÑO DE SECUNDARIA" <?= $ref_nombre == 'TERCER AÑO DE SECUNDARIA' ? 'selected' : ''; ?>>TERCER AÑO DE SECUNDARIA</option>
+                                                <option value="CUARTO AÑO DE SECUNDARIA" <?= $ref_nombre == 'CUARTO AÑO DE SECUNDARIA' ? 'selected' : ''; ?>>CUARTO AÑO DE SECUNDARIA</option>
+                                                <option value="QUINTO AÑO DE SECUNDARIA" <?= $ref_nombre == 'QUINTO AÑO DE SECUNDARIA' ? 'selected' : ''; ?>>QUINTO AÑO DE SECUNDARIA</option>
                                             </select>
-                                        </div>                                    
+                                        </div> 
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                         <label for="">Institución Educativa de Procedencia</label>
-                                            <select name="ref_parentezco" value="<?=$ref_parentezco;?>" class="form-control">
-                                            <!-- <option value="" disabled selected>Elije una opción</option> -->
-                                            <option value="NINGUNA">NINGUNA</option>
-                                            <option value="6008 JOSÉ ANTONIO DAPELO">6008 JOSÉ ANTONIO DAPELO</option> 
-                                            <option value="6023 JULIO CESAR ROJAS">6023 JULIO CESAR ROJAS</option>
-                                            <option value="6030 VICTOR ANDRES BELAUNDE DIEZ CANSECO">6030 VICTOR ANDRES BELAUNDE DIEZ CANSECO</option>
-                                            <option value="7061 HEROES DE SAN JUAN ">7061 HEROES DE SAN JUAN</option>  
-                                            <option value="7098 RODRIGO LARA BONILLA">7098 RODRIGO LARA BONILLA</option>
-                                            <option value="7104 RAMIRO PRIALE PRIALE">7104 RAMIRO PRIALE PRIALE</option>
-                                            <option value="7267 SEÑOR DE LOS MILAGROS">7267 SEÑOR DE LOS MILAGROS</option>
-                                            <option value="CEBA JOSÉ FAUSTINO SÁNCHEZ CARRIÓN">CEBA JOSÉ FAUSTINO SÁNCHEZ CARRIÓN</option>
-                                            <option value="IEAC CASA ABIERTA DE NAZARETH">IEAC CASA ABIERTA DE NAZARETH</option> 
-                                            <option value="JOSE FAUSTINO SANCHEZ CARRION">JOSE FAUSTINO SANCHEZ CARRION</option> 
-                                            <option value="MIGUEL GRAU SEMINARIO">MIGUEL GRAU SEMINARIO</option>  
-                                            <option value="SAN JOSÉ DE PUNTA NEGRA">SAN JOSÉ DE PUNTA NEGRA</option>  
-                                            <option value="OTROS - PONER EL NOMBRE DE LA iNSTITUCIÓN">OTROS - PONER EL NOMBRE DE LA iNSTITUCIÓN</option> 
+                                            <select name="ref_colegio" class="form-control" required>
+                                            <option value="" disabled <?= empty($ref_colegio) ? 'selected' : ''; ?>>Seleccione una opción</option>
+                                            <option value="NINGUNA" <?= $ref_colegio == 'NINGUNA' ? 'selected' : ''; ?>>NINGUNA</option>
+                                            <option value="6008 JOSÉ ANTONIO DAPELO" <?= $ref_colegio == '6008 JOSÉ ANTONIO DAPELO' ? 'selected' : ''; ?>>6008 JOSÉ ANTONIO DAPELO</option> 
+                                            <option value="6023 JULIO CESAR ROJAS" <?= $ref_colegio == '6023 JULIO CESAR ROJAS' ? 'selected' : ''; ?>>6023 JULIO CESAR ROJAS</option>
+                                            <option value="6030 VICTOR ANDRES BELAUNDE DIEZ CANSECO" <?= $ref_colegio == '6030 VICTOR ANDRES BELAUNDE DIEZ CANSECO' ? 'selected' : ''; ?>>6030 VICTOR ANDRES BELAUNDE DIEZ CANSECO</option>
+                                            <option value="7061 HEROES DE SAN JUAN" <?= $ref_colegio == '7061 HEROES DE SAN JUAN' ? 'selected' : ''; ?>>7061 HEROES DE SAN JUAN</option>  
+                                            <option value="7098 RODRIGO LARA BONILLA" <?= $ref_colegio == '7098 RODRIGO LARA BONILLA' ? 'selected' : ''; ?>>7098 RODRIGO LARA BONILLA</option>
+                                            <option value="7104 RAMIRO PRIALE PRIALE" <?= $ref_colegio == '7104 RAMIRO PRIALE PRIALE' ? 'selected' : ''; ?>>7104 RAMIRO PRIALE PRIALE</option>
+                                            <option value="7267 SEÑOR DE LOS MILAGROS" <?= $ref_colegio == '7267 SEÑOR DE LOS MILAGROS' ? 'selected' : ''; ?>>7267 SEÑOR DE LOS MILAGROS</option>
+                                            <option value="CEBA JOSÉ FAUSTINO SÁNCHEZ CARRIÓN" <?= $ref_colegio == 'CEBA JOSÉ FAUSTINO SÁNCHEZ CARRIÓN' ? 'selected' : ''; ?>>CEBA JOSÉ FAUSTINO SÁNCHEZ CARRIÓN</option>
+                                            <option value="IEAC CASA ABIERTA DE NAZARETH" <?= $ref_colegio == 'IEAC CASA ABIERTA DE NAZARETH' ? 'selected' : ''; ?>>IEAC CASA ABIERTA DE NAZARETH</option> 
+                                            <option value="JOSE FAUSTINO SANCHEZ CARRION" <?= $ref_colegio == 'JOSE FAUSTINO SANCHEZ CARRION' ? 'selected' : ''; ?>>JOSE FAUSTINO SANCHEZ CARRION</option> 
+                                            <option value="MIGUEL GRAU SEMINARIO" <?= $ref_colegio == 'MIGUEL GRAU SEMINARIO' ? 'selected' : ''; ?>>MIGUEL GRAU SEMINARIO</option>  
+                                            <option value="SAN JOSÉ DE PUNTA NEGRA" <?= $ref_colegio == 'SAN JOSÉ DE PUNTA NEGRA' ? 'selected' : ''; ?>>SAN JOSÉ DE PUNTA NEGRA</option>  
+                                            <option value="OTROS - PONER EL NOMBRE DE LA iNSTITUCIÓN" <?= $ref_colegio == 'TROS - PONER EL NOMBRE DE LA iNSTITUCIÓN' ? 'selected' : ''; ?>>OTROS - PONER EL NOMBRE DE LA iNSTITUCIÓN</option> 
                                             </select>
                                         </div>                                    
                                     </div>
@@ -420,7 +524,10 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                         </div>
                     </div>
                 </div>
-
+                <input type="hidden" name="foto" value="<?= htmlspecialchars($foto); ?>">
+                <input type="hidden" name="ci1" value="<?= htmlspecialchars($ci1); ?>">
+                <input type="hidden" name="conadis" value="<?= htmlspecialchars($conadis); ?>">
+                <input type="hidden" name="conadis1" value="<?= htmlspecialchars($conadis1); ?>">                            
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -445,17 +552,22 @@ include ('../../app/controllers/grados/listado_de_grados.php');
         
         const codigoSelect = document.getElementById("grado_id");
         const cursoEspecialidadInput = document.getElementById("curso_especialidad");
-
+        const docenteInput = document.getElementById("docente");
+        const semestreInput = document.getElementById("semestre");
         
         if (codigoSelect.selectedIndex > 0) {
             
             const curso = codigoSelect.options[codigoSelect.selectedIndex].getAttribute("data-curso");
-
+            const docente = codigoSelect.options[codigoSelect.selectedIndex].getAttribute("data-docente");
+            const semestre = codigoSelect.options[codigoSelect.selectedIndex].getAttribute("data-semestre");
            
             cursoEspecialidadInput.value = curso ? curso : "";
+            docenteInput.value = docente ? docente : "";
+            semestreInput.value = semestre ? semestre : "";
         } else {
             
             cursoEspecialidadInput.value = "";
+            docenteInput.value = "";
         }
     }
 </script>
@@ -468,22 +580,77 @@ include ('../../layout/mensajes.php');
 ?>
 
 <script> 
-    function archivo(evt) {
-        var files = evt.target.files; // FileList object
-        for (var i = 0, f; f = files[i]; i++) {
-            if (!f.type.match('image.*')) continue;
+    // function archivo(evt) {
+    //     var files = evt.target.files; 
+    //     for (var i = 0, f; f = files[i]; i++) {
+    //         if (!f.type.match('image.*')) continue;
 
-            var reader = new FileReader();
-            reader.onload = (function (theFile) {
-                return function (e) {
-                    document.getElementById("list").innerHTML = [
-                        '<img class="thumb thumbnail" src="', e.target.result, 
-                        '" width="300px" title="', escape(theFile.name), '"/>'
-                    ].join('');
-                };
-            })(f);
-            reader.readAsDataURL(f);
-        }
+    //         var reader = new FileReader();
+    //         reader.onload = (function (theFile) {
+    //             return function (e) {
+    //                 var targetId = evt.target.id === 'file' ? 'list_dni' : 'list_conadis'  ;
+    //                 document.getElementById(targetId).innerHTML = [
+    //                     '<img class="thumb thumbnail" src="', e.target.result, 
+    //                     '" width="300px" title="', escape(theFile.name), '"/>'
+    //                 ].join('');
+    //             };
+    //         })(f);
+    //         reader.readAsDataURL(f);
+    //     }
+    // }
+    // document.getElementById('file').addEventListener('change', archivo, false);
+    // document.getElementById('file_ci1').addEventListener('change', archivo, false);
+    // document.getElementById('file_conadis').addEventListener('change', archivo, false);
+    // document.getElementById('file_conadis1').addEventListener('change', archivo, false);
+
+
+    function archivo(evt) {
+    var files = evt.target.files; // FileList object
+    for (var i = 0, f; f = files[i]; i++) {
+        if (!f.type.match('image.*')) continue; // Validar que sea una imagen
+        var reader = new FileReader();
+        reader.onload = (function (theFile) {
+            return function (e) {
+                var targetId;
+                switch (evt.target.id) {
+                    case 'file_foto':
+                        targetId = 'list_foto';
+                        break;
+                    case 'file_ci1':
+                        targetId = 'list_ci1';
+                        break;
+                    case 'file_conadis':
+                        targetId = 'list_conadis';
+                        break;
+                    case 'file_conadis1':
+                        targetId = 'list_conadis1';
+                        break;
+                    default:
+                        console.error('Input desconocido:', evt.target.id);
+                        return;
+                }
+                document.getElementById(targetId).innerHTML = [
+                    '<img class="thumb thumbnail" src="', e.target.result, 
+                    '" width="100px" title="', escape(theFile.name), '"/>'
+                ].join('');
+            };
+        })(f);
+        reader.readAsDataURL(f); 
     }
-    document.getElementById('file').addEventListener('change', archivo, false);
+}
+
+document.getElementById('file_foto').addEventListener('change', archivo, false);
+document.getElementById('file_ci1').addEventListener('change', archivo, false);
+document.getElementById('file_conadis').addEventListener('change', archivo, false);
+document.getElementById('file_conadis1').addEventListener('change', archivo, false);
+
+
+
+
+
+
+
+
+
+
 </script>

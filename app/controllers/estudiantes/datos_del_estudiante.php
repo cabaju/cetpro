@@ -68,4 +68,5 @@ foreach ($estudiantes as $estudiante){
     $inicio = $estudiante['inicio']; 
     $termino = $estudiante['termino']; 
     $frecuencia = $estudiante['frecuencia']; 
+    $nivel = $estudiante['nivel']; 
 }

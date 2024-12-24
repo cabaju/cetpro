@@ -21,6 +21,10 @@ if($_FILES['file']['name'] != null){
 }
 
 
+
+
+
+
 $sentencia = $pdo->prepare('INSERT INTO configuracion_instituciones
          (nombre_institucion,logo,direccion,telefono,celular,correo, fyh_creacion, estado)
 VALUES ( :nombre_institucion,:logo,:direccion,:telefono,:celular,:correo,:fyh_creacion,:estado)');

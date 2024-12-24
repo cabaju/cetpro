@@ -214,70 +214,59 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                             <input type="email" name="email" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <br>
+                                    <br>
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="">DNI / CE</label>
-                                                    <input type="file" name="file" id="file" class="form-control">
+                                                    <input type="file" name="file_foto" id="file_foto" class="form-control">
                                                     <br>
                                                     <center>
-                                                        <output id="list_dni">
-                                                            <img src="<?=APP_URL."/public/images/configuracion/".$foto;?>" width="200px" alt="">
+                                                        <output id="list_foto">
+                                                            <img src="<?=APP_URL."/public/images/configuracion/".$foto;?>" width="50px" alt="">
                                                         </output>
                                                     </center>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="">DNI / CE</label>
                                                     <input type="file" name="file_ci1" id="file_ci1" class="form-control">
                                                     <br>
                                                     <center>
                                                         <output id="list_ci1">
-                                                            <img src="<?=APP_URL."/public/images/configuracion/".$ci1;?>" width="200px" alt="">
+                                                            <img src="<?=APP_URL."/public/images/configuracion/".$ci1;?>" width="50px" alt="">
                                                         </output>
                                                     </center>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                            </div>        
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="">DNI CONADIS</label>
                                                     <input type="file" name="file_conadis" id="file_conadis" class="form-control">
                                                     <br>
                                                     <center>
                                                         <output id="list_conadis">
-                                                            <img src="<?=APP_URL."/public/images/configuracion/".$conadis;?>" width="200px" alt="">
+                                                            <img src="<?=APP_URL."/public/images/configuracion/".$conadis;?>" width="50px" alt="">
                                                         </output>
                                                     </center>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                    
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="">DNI CONADIS</label>
                                                     <input type="file" name="file_conadis1" id="file_conadis1" class="form-control">
                                                     <br>
                                                     <center>
                                                         <output id="list_conadis1">
-                                                            <img src="<?=APP_URL."/public/images/configuracion/".$conadis1;?>" width="200px" alt="">
+                                                            <img src="<?=APP_URL."/public/images/configuracion/".$conadis1;?>" width="50px" alt="">
                                                         </output>
                                                     </center>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -347,7 +336,7 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="">AÑO</label>
+                                            <label for="">RUDE</label>
                                             <input type="text" name="rude" class="form-control" required>
                                         </div>
                                     </div>
@@ -383,8 +372,8 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="ref_parentezco">Institución Educativa de Procedencia</label>
-                                            <select name="ref_parentezco" id="ref_parentezco" class="form-control" required>
+                                            <label for="ref_colegio">Institución Educativa de Procedencia</label>
+                                            <select name="ref_colegio" id="ref_colegio" class="form-control" required>
                                                 <option value="" selected disabled>Seleccione una opción</option>
                                                 <option value="NINGUNA">NINGUNA</option>
                                                 <option value="6008 JOSÉ ANTONIO DAPELO">6008 JOSÉ ANTONIO DAPELO</option> 
@@ -492,28 +481,82 @@ include ('../../app/controllers/grados/listado_de_grados.php');
         }
     }
 
-    function archivo(evt) {
-        var files = evt.target.files; // FileList object
-        for (var i = 0, f; f = files[i]; i++) {
-            if (!f.type.match('image.*')) continue;
+    // function archivo(evt) {
+    //     var files = evt.target.files; // FileList object
+    //     for (var i = 0, f; f = files[i]; i++) {
+    //         if (!f.type.match('image.*')) continue;
 
-            var reader = new FileReader();
-            reader.onload = (function (theFile) {
-                return function (e) {
-                    var targetId = evt.target.id === 'file' ? 'list_dni' : 'list_conadis'  ;
-                    document.getElementById(targetId).innerHTML = [
-                        '<img class="thumb thumbnail" src="', e.target.result, 
-                        '" width="300px" title="', escape(theFile.name), '"/>'
-                    ].join('');
-                };
-            })(f);
-            reader.readAsDataURL(f);
-        }
+    //         var reader = new FileReader();
+    //         reader.onload = (function (theFile) {
+    //             return function (e) {
+    //                 var targetId = evt.target.id === 'file_foto' ? 'list_ci1' : 'list_conadis'  ;
+    //                 document.getElementById(targetId).innerHTML = [
+    //                     '<img class="thumb thumbnail" src="', e.target.result, 
+    //                     '" width="300px" title="', escape(theFile.name), '"/>'
+    //                 ].join('');
+    //             };
+    //         })(f);
+    //         reader.readAsDataURL(f);
+    //     }
+    // }
+    // document.getElementById('file_foto').addEventListener('change', archivo, false);
+    // document.getElementById('file_ci1').addEventListener('change', archivo, false);
+    // document.getElementById('file_conadis').addEventListener('change', archivo, false);
+    // document.getElementById('file_conadis1').addEventListener('change', archivo, false);
+
+
+    function archivo(evt) {
+    var files = evt.target.files; // FileList object
+    for (var i = 0, f; f = files[i]; i++) {
+        if (!f.type.match('image.*')) continue; // Validar que sea una imagen
+
+        var reader = new FileReader();
+        reader.onload = (function (theFile) {
+            return function (e) {
+                // Identificar el elemento correcto según el ID del input
+                var targetId;
+                switch (evt.target.id) {
+                    case 'file_foto':
+                        targetId = 'list_foto';
+                        break;
+                    case 'file_ci1':
+                        targetId = 'list_ci1';
+                        break;
+                    case 'file_conadis':
+                        targetId = 'list_conadis';
+                        break;
+                    case 'file_conadis1':
+                        targetId = 'list_conadis1';
+                        break;
+                    default:
+                        console.error('Input desconocido:', evt.target.id);
+                        return;
+                }
+
+                // Mostrar vista previa en el elemento correspondiente
+                document.getElementById(targetId).innerHTML = [
+                    '<img class="thumb thumbnail" src="', e.target.result, 
+                    '" width="100px" title="', escape(theFile.name), '"/>'
+                ].join('');
+            };
+        })(f);
+        reader.readAsDataURL(f); // Leer el archivo como DataURL
     }
-    document.getElementById('file').addEventListener('change', archivo, false);
-    document.getElementById('file_ci1').addEventListener('change', archivo, false);
-    document.getElementById('file_conadis').addEventListener('change', archivo, false);
-    document.getElementById('file_conadis1').addEventListener('change', archivo, false);
+}
+
+// Asignar eventos a cada input
+document.getElementById('file_foto').addEventListener('change', archivo, false);
+document.getElementById('file_ci1').addEventListener('change', archivo, false);
+document.getElementById('file_conadis').addEventListener('change', archivo, false);
+document.getElementById('file_conadis1').addEventListener('change', archivo, false);
+
+
+
+
+
+
+
+
 
     </script>
 

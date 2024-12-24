@@ -1,35 +1,20 @@
 <?php
 
-
 include ('../../../app/config.php');
 
 
+$id_usuario = $_POST['id_usuario'];
+$id_persona = $_POST['id_persona'];
+$id_estudiante = $_POST['id_estudiante'];
+$id_ppff = $_POST['id_ppff'];
 $rol_id = $_POST['rol_id'];
-$ci = $_POST['ci'];
 $nombres = $_POST['nombres'];
 $apellidos = $_POST['apellidos'];
-$apellidosM = $_POST['apellidosM'];
-$sexo = $_POST['sexo'];
+$ci = $_POST['ci'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
-
-$pais = $_POST['pais'];
-$lugar = $_POST['lugar'];
-$departamento = $_POST['departamento'];
-$provincia = $_POST['provincia'];
-$distrito = $_POST['distrito'];
-$direccion = $_POST['direccion'];
-
-$trabaja = $_POST['trabaja'];
-$ocupacion = $_POST['ocupacion'];
-$estado_civil = $_POST['estado_civil'];
-
-$gradoinst = $_POST['gradoinst'];
-$inclusivo = $_POST['inclusivo'];
-$discapacidad = $_POST['discapacidad'];
-
 $celular = $_POST['celular'];
 $email = $_POST['email'];
-$profesion = "ESTUDIANTE";
+$direccion = $_POST['direccion'];
 $nivel_id = $_POST['nivel_id'];
 $grado_id = $_POST['grado_id'];
 $rude = $_POST['rude'];
@@ -40,13 +25,15 @@ $ocupacion_ppff = $_POST['ocupacion_ppff'];
 $ref_nombre = $_POST['ref_nombre'];
 $ref_colegio = $_POST['ref_colegio'];
 $ref_celular = $_POST['ref_celular'];
+$profesion = "ESTUDIANTE";
 
-$pdo->beginTransaction();
+
 
 $foto = null; // Valor por defecto
 $ci1 = null; // Valor por defecto
 $conadis = null; // Valor por defecto
 $conadis1 = null; // Valor por defecto
+
 
 if (isset($_FILES['file_foto']) && $_FILES['file_foto']['error'] === UPLOAD_ERR_OK) {
     // Crear un nombre único y seguro para la imagen
@@ -69,7 +56,7 @@ if (isset($_FILES['file_foto']) && $_FILES['file_foto']['error'] === UPLOAD_ERR_
         die("Error al mover el archivo. Verifica permisos de la carpeta: " . $location);
     }
 } else {
-    die("Error al cargar el archivo. Código de error: " . ($_FILES['file_foto']['error'] ?? 'No definido'));
+    die("Error al cargar el archivoxxxxx. Código de error: " . ($_FILES['file_foto']['error'] ?? 'No definido'));
 }
 
 
@@ -151,39 +138,75 @@ if (isset($_FILES['file_conadis1']) && $_FILES['file_conadis1']['error'] === UPL
 
 
 
-///////////////////////// INSERTAR A LA TABLA USUARIOS
+///////////////////////// ACTUALIZAR A LA TABLA USUARIOS
 $password = password_hash($ci, PASSWORD_DEFAULT);
-try {
-$sentencia = $pdo->prepare('INSERT INTO usuarios
-         (rol_id, email, password, fyh_creacion, estado)
-VALUES ( :rol_id,:email,:password,:fyh_creacion,:estado)');
+
+$sentencia = $pdo->prepare('UPDATE usuarios
+       SET  rol_id=:rol_id,
+            email=:email,
+            password=:password,
+            fyh_actualizacion=:fyh_actualizacion
+      WHERE id_usuario =:id_usuario');
 
 $sentencia->bindParam(':rol_id',$rol_id);
 $sentencia->bindParam(':email',$email);
 $sentencia->bindParam(':password',$password);
-$sentencia->bindParam(':fyh_creacion',$fechaHora);
-$sentencia->bindParam(':estado',$estado_de_registro);
+$sentencia->bindParam('fyh_actualizacion',$fechaHora);
+$sentencia->bindParam('id_usuario',$id_usuario);
 $sentencia->execute();
 
-$id_usuario = $pdo->lastInsertId();
 
-$direccion = isset($_POST['direccion']) ? $_POST['direccion'] : null;
+// var_dump($foto);
+// var_dump($ci1);
+// var_dump($conadis);
+// var_dump($conadis1);
+// var_dump($id_persona);
 
-} catch (PDOException $e) {
-    // Manejar error de unicidad u otros errores
-    if ($e->getCode() == 23000) { // Código para violación de clave única
-        die("Error: El correo electrónico ya está registrado.");
-    } else {
-        die("Error al insertar en la base de datos: " . $e->getMessage());
-    }
-}
 
-//////////////////////// INSERTAR A LA TABLA PERSONAS
-$sentencia = $pdo->prepare('INSERT INTO personas
-         (usuario_id,foto,ci1,conadis,conadis1,ci,nombres,apellidos,apellidosM,sexo,fecha_nacimiento,pais,lugar,departamento,provincia,distrito,direccion,trabaja,ocupacion,estado_civil,gradoinst,inclusivo,discapacidad,celular,profesion,fyh_creacion, estado)
-VALUES ( :usuario_id,:foto,:ci1,:conadis,:conadis1,:ci,:nombres,:apellidos,:apellidosM,:sexo,:fecha_nacimiento,:pais,:lugar,:departamento,:provincia,:distrito,:direccion,:trabaja,:ocupacion,:estado_civil,:gradoinst,:inclusivo,:discapacidad,:celular,:profesion,:fyh_creacion,:estado)');
+// $sentencia_check = $pdo->prepare('SELECT foto FROM personas WHERE id_persona = :id_persona');
+// $sentencia_check->bindParam(':id_persona', $id_persona);
+// $sentencia_check->execute();
+// $resultado = $sentencia_check->fetch(PDO::FETCH_ASSOC);
+// var_dump($resultado); 
 
-$sentencia->bindParam(':usuario_id',$id_usuario);
+//////////////////////// ACTUALIZAR A LA TABLA PERSONAS
+$sentencia = $pdo->prepare('UPDATE personas
+       SET  foto=:foto,
+            ci1=:ci1,
+            conadis=:conadis,
+            conadis1=:conadis1,
+            ci=:ci,
+            nombres=:nombres,
+            apellidos=:apellidos,
+            apellidosM=:apellidosM,
+            sexo=:sexo,
+            fecha_nacimiento=:fecha_nacimiento,
+
+            pais=:pais,
+            lugar=:lugar,
+            departamento=:departamento,
+            provincia=:provincia,
+            distrito=:distrito,
+            direccion=:direccion,
+
+            trabaja=:trabaja,
+            ocupacion=:ocupacio,
+
+            celular=:celular,
+            profesion=:profesion,
+            estado_civil=:estado_civil,
+            gradoinst=:gradoinst,
+            inclusivo=:inclusivo,
+            discapacidad=:discapacidad,
+
+            celular=:celular,
+            profesion=:profesion,
+            fyh_actualizacion=:fyh_actualizacion
+      where id_persona=:id_persona ');
+
+
+$sentencia->bindParam(':id_persona',$id_persona);
+
 $sentencia->bindParam(':foto',$foto);
 $sentencia->bindParam(':ci1',$ci1);
 $sentencia->bindParam(':conadis',$conadis);
@@ -214,32 +237,46 @@ $sentencia->bindParam(':celular',$celular);
 $sentencia->bindParam(':profesion',$profesion);
 $sentencia->bindParam(':fyh_creacion',$fechaHora);
 $sentencia->bindParam(':estado',$estado_de_registro);
-$sentencia->execute();
 
-$id_persona = $pdo->lastInsertId();
 
-/////////////////////// INSERTAR A LA TABLA ESTUDIANTES
-$sentencia = $pdo->prepare('INSERT INTO estudiantes
-         (persona_id, nivel_id, grado_id, rude, fyh_creacion, estado)
-VALUES ( :persona_id,:nivel_id,:grado_id,:rude,:fyh_creacion,:estado)');
 
-$sentencia->bindParam(':persona_id',$id_persona);
+if ($sentencia->execute()) {
+    echo "Datos actualizados correctamente en la tabla personas.";
+} else {
+    echo "Error al actualizar la tabla personas.";
+    print_r($sentencia->errorInfo()); // Mostrar error SQL
+}
+
+
+/////////////////////// ACTUALIZAR A LA TABLA ESTUDIANTES
+$sentencia = $pdo->prepare('UPDATE estudiantes
+        SET nivel_id=:nivel_id,
+            grado_id=:grado_id,
+            rude=:rude,
+            fyh_actualizacion=:fyh_actualizacion
+        where id_estudiante=:id_estudiante');
+
 $sentencia->bindParam(':nivel_id',$nivel_id);
 $sentencia->bindParam(':grado_id',$grado_id);
 $sentencia->bindParam(':rude',$rude);
-$sentencia->bindParam(':fyh_creacion',$fechaHora);
-$sentencia->bindParam(':estado',$estado_de_registro);
+$sentencia->bindParam('fyh_actualizacion',$fechaHora);
+$sentencia->bindParam(':id_estudiante',$id_estudiante);
 $sentencia->execute();
 
-$id_estudiante = $pdo->lastInsertId();
 
 
-/////////////////////// INSERTAR A LA TABLA PPFFS
-$sentencia = $pdo->prepare('INSERT INTO ppffs
-         (estudiante_id , nombres_apellidos_ppff, ci_ppf, celular_ppff, ocupacion_ppff, ref_nombre, ref_colegio, ref_celular, fyh_creacion, estado)
-VALUES ( :estudiante_id ,:nombres_apellidos_ppff,:ci_ppf,:celular_ppff,:ocupacion_ppff,:ref_nombre,:ref_colegio,:ref_celular,:fyh_creacion,:estado)');
+/////////////////////// ACTUALIZAR A LA TABLA PPFFS
+$sentencia = $pdo->prepare('UPDATE ppffs
+        SET nombres_apellidos_ppff=:nombres_apellidos_ppff,
+            ci_ppf=:ci_ppf,
+            celular_ppff=:celular_ppff,
+            ocupacion_ppff=:ocupacion_ppff,
+            ref_nombre=:ref_nombre,
+            ref_colegio=:ref_colegio,
+            ref_celular=:ref_celular,
+            fyh_actualizacion=:fyh_actualizacion
+    WHERE id_ppff =:id_ppff');
 
-$sentencia->bindParam(':estudiante_id',$id_estudiante);
 $sentencia->bindParam(':nombres_apellidos_ppff',$nombres_apellidos_ppff);
 $sentencia->bindParam(':ci_ppf',$ci_ppf);
 $sentencia->bindParam(':celular_ppff',$celular_ppff);
@@ -247,22 +284,21 @@ $sentencia->bindParam(':ocupacion_ppff',$ocupacion_ppff);
 $sentencia->bindParam(':ref_nombre',$ref_nombre);
 $sentencia->bindParam(':ref_colegio',$ref_colegio);
 $sentencia->bindParam(':ref_celular',$ref_celular);
-$sentencia->bindParam(':fyh_creacion',$fechaHora);
-$sentencia->bindParam(':estado',$estado_de_registro);
+$sentencia->bindParam('fyh_actualizacion',$fechaHora);
+$sentencia->bindParam(':id_ppff',$id_ppff);
+
 
 if($sentencia->execute()){
-    echo 'success';
-    $pdo->commit();
+    echo 'Datos actualizados correctamente.';
     session_start();
-    $_SESSION['mensaje'] = "Se registro al estudiante de la manera correcta en la base de datos";
+    $_SESSION['mensaje'] = "Se actualizó correctamente.";
     $_SESSION['icono'] = "success";
     header('Location:'.APP_URL."/admin/estudiantes");
 
 }else{
-    echo 'error al registrar a la base de datos';
-    $pdo->rollBack();
-    session_start();
-    $_SESSION['mensaje'] = "Error no se pudo registrar en la base datos, comuniquese con el administrador";
+   
+
+    $_SESSION['mensaje'] = "Error al actualizar.";
     $_SESSION['icono'] = "error";
     ?><script>window.history.back();</script><?php
 }

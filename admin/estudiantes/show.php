@@ -210,7 +210,7 @@ if (isset($fecha_nacimiento) && !empty($fecha_nacimiento)) {
                                                     <label  class="large-text1" for="">DNI/CE</label>
                                                     <br><br>
                                                     <center>
-                                                        <img src="<?=APP_URL."/public/images/configuracion/".$foto;?>" width="150px" alt="">
+                                                        <img src="<?=APP_URL."/public/images/configuracion/".$foto;?>" width="100px" alt="">
                                                     </center>
                                                 </div>
                                             </div>
@@ -223,7 +223,7 @@ if (isset($fecha_nacimiento) && !empty($fecha_nacimiento)) {
                                                     <label  class="large-text1" for="">DNI/CE</label>
                                                     <br><br>
                                                     <center>
-                                                        <img src="<?=APP_URL."/public/images/configuracion/".$ci1;?>" width="150px" alt="">
+                                                        <img src="<?=APP_URL."/public/images/configuracion/".$ci1;?>" width="100px" alt="">
                                                     </center>
                                                 </div>
                                             </div>
@@ -236,7 +236,7 @@ if (isset($fecha_nacimiento) && !empty($fecha_nacimiento)) {
                                                     <label  class="large-text1" for="">Conadis</label>
                                                     <br><br>
                                                     <center>
-                                                        <img src="<?=APP_URL."/public/images/configuracion/".$conadis;?>" width="150px" alt="">
+                                                        <img src="<?=APP_URL."/public/images/configuracion/".$conadis;?>" width="100px" alt="">
                                                     </center>
                                                 </div>
                                             </div>
@@ -249,7 +249,7 @@ if (isset($fecha_nacimiento) && !empty($fecha_nacimiento)) {
                                                     <label  class="large-text1" for="">Conadis</label>
                                                     <br><br>
                                                     <center>
-                                                        <img src="<?=APP_URL."/public/images/configuracion/".$conadis1;?>" width="150px" alt="">
+                                                        <img src="<?=APP_URL."/public/images/configuracion/".$conadis1;?>" width="100px" alt="">
                                                     </center>
                                                 </div>
                                             </div>
@@ -357,7 +357,7 @@ if (isset($fecha_nacimiento) && !empty($fecha_nacimiento)) {
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="large-text1" for="">Institución Educativa de Procedencia</label>
-                                            <p class="large-text4"><?=$ref_parentezco;?></p>
+                                            <p class="large-text4"><?=$ref_colegio;?></p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -454,3 +454,6 @@ include ('../../admin/layout/parte2.php');
 include ('../../layout/mensajes.php');
 
 ?>
+
+
+
